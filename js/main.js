@@ -7,14 +7,15 @@
 const puzzleSelectors = document.querySelectorAll("#buttonHolder img"),
 			dropcontainer = document.querySelector(".puzzle-board"),
 			dragImages = document.querySelectorAll(".puzzle-image"),
-			dropzones = document.querySelectorAll(".drop-zone");
-
+			dropzones = document.querySelectorAll(".drop-zone"),
+      puzzleDrag = document.querySelector(".puzzle-pieces");
 	// functions go in the middle
+	pieceName = ["topLeft", "topRight", "bottomLeft", "bottomRight"];
 	function swapImages () {
 		let currentIndex = this.dataset.imageref;
 
 		dragImages.forEach((image, index) => {
-		 image.src = `images/dd/${pieceName[index] + currentIndex}.jpg`;
+		 image.src = `images/dd/${pieceName [index] + currentIndex}.jpg`;
 	 });
 
 		// swap out the draggable thumbnail Images
@@ -30,7 +31,7 @@ const puzzleSelectors = document.querySelectorAll("#buttonHolder img"),
 		resetImages();
 	}
  function resetImages() {
-	 dropZones.forEach(zone => {
+	 dropzones.forEach(zone => {
 
 if ( zone.children.length > 0) {
 	dragContainer.appendChild(zone.firstElementChild);
