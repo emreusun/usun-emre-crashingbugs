@@ -8,7 +8,7 @@ const puzzleSelectors = document.querySelectorAll("#buttonHolder img"),
 			dropcontainer = document.querySelector(".puzzle-board"),
 			dragImages = document.querySelectorAll(".puzzle-image"),
 			dropzones = document.querySelectorAll(".drop-zone"),
-      puzzleDrag = document.querySelector(".puzzle-pieces");
+      dragContainer = document.querySelector(".puzzle-pieces");
 	// functions go in the middle
 	pieceName = ["topLeft", "topRight", "bottomLeft", "bottomRight"];
 	function swapImages () {
@@ -42,6 +42,10 @@ if ( zone.children.length > 0) {
 
 	function startDrag() {
 		console.log('dragging ' + this.id);
+		// save reference to the element the user is dragging
+		// we can retrive the element later and put it in da drop zone
+		event.dataTransfer.setData("dragTarget", this.id);
+
 	}
 
 	function draggedOver(event) {
@@ -51,8 +55,17 @@ if ( zone.children.length > 0) {
 
 	function dropped(event) {
 		event.preventDefault();
-		console.log('dropped on the element');
-		console.log(event.target.id);
+
+		if(this.children.length > 0) { return; }
+
+
+	let targetImage = document.querySelector(`#${event.dataTransfer.getData("dragTarget")}`);
+
+	this.appendChild(targetImage);
+	targetImage.style.width ="100%";
+	targetImage.style.padding ="0%";
+	targetImage.style.
+	debugger;
 	}
 
 
